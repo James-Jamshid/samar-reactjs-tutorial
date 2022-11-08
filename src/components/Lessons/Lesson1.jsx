@@ -1,3 +1,11 @@
+//bu darsda organgan narsalarim:
+//1.componentlarni ochish; 2.ularni 2xil export qilish; 3.ularni distrubtizatsiya qilsh;
+//4ozgaruvchi ochib uni compponent ichida gullik qav bilan ishlatish
+//5.funckisya ochish, arrow functionda returnni qachon ishlatish va qachon ishlatmasa ham bolishi
+//6.funksiyani parametrlarini ham componentga yuborish; componentga funcsiya jonatish;
+//7.objectlarni props qilib jonatib bomasligini anglab yetish
+//8.2ta yani true va false sintaksisi ishlatilganda   terminalniy operator qilish
+
 import { Container } from "./Style"
 
 const Header = () => {

@@ -11,6 +11,9 @@ const Navbar = () => {
         <Link to='/lesson'>
           <button>lesson</button>
         </Link>
+        <Link to='/lesson2'>
+          <button>lesson2</button>
+        </Link>
         <Link to='/loyiha'>
           <button>loyiha</button>
         </Link>
