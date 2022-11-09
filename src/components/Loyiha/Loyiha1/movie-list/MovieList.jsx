@@ -6,6 +6,7 @@ const MovieList = ({ data }) => {
     <ul className='movie-list'>
       {data.map((item) => (
         <MovieListItem
+          key={item.id} // key value doim bolishi kere maping qilganda
           // name={item.name}
           // viewers={item.viewers}
           // favourite={item.favourite}

@@ -14,6 +14,12 @@ const Navbar = () => {
         <Link to='/lesson2'>
           <button>lesson2</button>
         </Link>
+        {/* <Link to='/lesson3.1'>
+          <button> State with ClassComp</button>
+        </Link> */}
+        <Link to='/lesson3.2'>
+          <button> State with FuncComp</button>
+        </Link>
         <Link to='/loyiha'>
           <button>loyiha</button>
         </Link>

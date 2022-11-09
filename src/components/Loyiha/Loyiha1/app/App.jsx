@@ -7,9 +7,9 @@ import "./app.css"
 
 const App = () => {
   const data = [
-    { name: "Empire of Osman", viewers: 989, favourite: false },
-    { name: "Ertugrul", viewers: 899, favourite: false },
-    { name: "Omar", viewers: 999, favourite: true },
+    { name: "Empire of Osman", viewers: 989, favourite: false, id: 1 },
+    { name: "Ertugrul", viewers: 899, favourite: false, id: 2 },
+    { name: "Ertugrul", viewers: 899, favourite: false, id: 3 },
   ]
   return (
     <div className='app font-monospace'>
