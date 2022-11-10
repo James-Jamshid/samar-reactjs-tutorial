@@ -43,14 +43,14 @@ class ClassComp extends React.Component {
       age: e.target.value,
     })
   }
-  changeHandler2 = (e, name) => {
-    console.log(name)
-    //tasavur qiling function ichidagi event 1tamas unga qoshimcha argumnet qoshmoqchi bolsak pastda inputga callback chaqirib
-    //osha yerga argumentlarni yozsak boladi:
-    this.setState({
-      age: e.target.value,
-    })
-  }
+  // changeHandler2 = (e, name) => {
+  //   console.log(name)
+  //   //tasavur qiling function ichidagi event 1tamas unga qoshimcha argumnet qoshmoqchi bolsak pastda inputga callback chaqirib
+  //   //osha yerga argumentlarni yozsak boladi:
+  //   this.setState({
+  //     age: e.target.value,
+  //   })
+  // }
   render() {
     const { firstname, lastname, link, channel } = this.props
     const { age, counter } = this.state
@@ -85,11 +85,11 @@ class ClassComp extends React.Component {
               className='form-control'
               onChange={this.changeHandler}
             />
-            <input
+            {/* <input
               type='text'
               className='form-control'
               onChange={(e) => this.changeHandler2(e, "Jamshid")}
-            />
+            /> */}
           </form>
         </div>
       </div>
