@@ -5,17 +5,36 @@ import AppInfo from "../app-info/AppInfo"
 import MovieList from "../movie-list/MovieList"
 import MoviesAddForm from "../movies-add-form/MoviesAddForm"
 import SearchPanel from "../search-panel/SearchPanel"
-
+import { v4 as uuidv4 } from "uuid"
 import "./app.css"
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       data: [
-        { name: "Empire of Osman", viewers: 989, favourite: false, id: 1 },
-        { name: "Ertugrul", viewers: 899, favourite: false, id: 2 },
-        { name: "Omar", viewers: 899, favourite: false, id: 3 },
+        {
+          name: "Empire of Osman",
+          viewers: 989,
+          favourite: false,
+          like: false,
+          id: 1,
+        },
+        {
+          name: "Ertugrul",
+          viewers: 899,
+          favourite: false,
+          like: false,
+          id: 2,
+        },
+        {
+          name: "Omar Hayyam",
+          viewers: 899,
+          favourite: false,
+          like: false,
+          id: 3,
+        },
       ],
+      term: "",
     }
   }
   onDelete = (id) => {
@@ -30,21 +49,58 @@ class App extends React.Component {
     })
   }
   addForm = (item) => {
+    const newItem = {
+      name: item.name,
+      viewers: item.viewers,
+      id: uuidv4(),
+      favourite: false,
+      like: false,
+    }
     this.setState(({ data }) => ({
-      data: [...data, item],
+      data: [...data, newItem],
     }))
   }
+  onToggleProp = (id, prop) => {
+    this.setState(({ data }) => ({
+      data: data.map((item) => {
+        if (item.id === id) {
+          return { ...item, [prop]: !item[prop] }
+        }
+        return item
+      }),
+    }))
+  }
+  searchHandler = (arr, term) => {
+    if (term.length === 0) {
+      return arr
+    }
+    return arr.filter((item) => item.name.toLowerCase().indexOf(term) > -1)
+  }
+  updateTermHandler = (term) => this.setState({ term: term })
+
   render() {
-    const { data } = this.state
+    const { data, term } = this.state
+    const allMoviesCount = data.length
+    const favouriteMovies = data.filter((c) => c.favourite).length
+    const likeMovies = data.filter((c) => c.like).length
+    const visibleDate = this.searchHandler(data, term)
     return (
       <div className='app font-monospace'>
         <div className='content'>
-          <AppInfo />
+          <AppInfo
+            allMoviesCount={allMoviesCount}
+            favouriteMovies={favouriteMovies}
+            likeMovies={likeMovies}
+          />
           <div className='search-panel'>
-            <SearchPanel />
+            <SearchPanel updateTermHandler={this.updateTermHandler} />
             <AppFilter />
           </div>
-          <MovieList data={data} onDelete={this.onDelete} />
+          <MovieList
+            data={visibleDate}
+            onDelete={this.onDelete}
+            onToggleProp={this.onToggleProp}
+          />
           <MoviesAddForm addForm={this.addForm} />
         </div>
       </div>

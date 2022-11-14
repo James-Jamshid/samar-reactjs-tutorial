@@ -4,7 +4,8 @@
 //3) jsxda props qilib object jonatib bolmaydi
 //4) lineyni funksiyada {()=> ma'lumot} ozi bilan return keladi lekin ichiga gullik qavs ochse return yozishimiz shart:
 //masalan: {()=>{return ma'lumot}}
-import React from "react"
+//5) eng pastga tushilsa funcCom da fragment yozganman bu ortiqcha divlardan qutilish uchun ishlatiladi
+import React, { Fragment } from "react"
 class ClassComp extends React.Component {
   constructor(props) {
     super(props)
@@ -100,8 +101,9 @@ class ClassComp extends React.Component {
 
 const FuncComp = () => {
   return (
-    <div>
+    <Fragment>
       <ClassComp
+        // bu fragment ortiqcha divlardan qutilish uchun ishlatiladi.
         firstname='Jamshid'
         lastname='Makhmudov'
         link='youtube.com'
@@ -113,7 +115,7 @@ const FuncComp = () => {
         link='youtube.com'
         channel='instagram'
       />
-    </div>
+    </Fragment>
   )
 }
 export default FuncComp
