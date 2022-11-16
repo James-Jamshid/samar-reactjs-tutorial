@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
-import "./index.css"
+import "./index.scss"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import Lesson1 from "./components/Lessons/Lesson1"

@@ -1,15 +1,17 @@
 import "./app-filter.css"
-const AppFilter = ({ updateFilterHandler }) => {
+const AppFilter = ({ updateFilterHandler, filter }) => {
   const btnArr = [
     { name: "all", label: "   All movies" },
     { name: "popular", label: "  Most rated movies" },
-    { name: "mostWatched", label: "    Most watched movies" },
+    { name: "mostViewers", label: "    Most watched movies" },
   ]
   return (
     <div className='btn-group'>
       {btnArr.map((btn) => (
         <button
-          className='btn btn-outline-dark'
+          className={`btn ${
+            filter === btn.name ? "btn-dark" : "btn-outline-dark"
+          }`}
           type='button'
           onClick={() => updateFilterHandler(btn.name)}
         >
@@ -25,4 +27,5 @@ const AppFilter = ({ updateFilterHandler }) => {
     </div>
   )
 }
+
 export default AppFilter

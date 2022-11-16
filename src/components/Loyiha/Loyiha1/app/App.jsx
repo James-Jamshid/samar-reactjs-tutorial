@@ -21,14 +21,14 @@ class App extends React.Component {
         },
         {
           name: "Ertugrul",
-          viewers: 899,
+          viewers: 799,
           favourite: false,
           like: false,
           id: 2,
         },
         {
           name: "Omar Hayyam",
-          viewers: 899,
+          viewers: 1000,
           favourite: false,
           like: false,
           id: 3,
@@ -85,14 +85,14 @@ class App extends React.Component {
     switch (filter) {
       case "popular":
         return arr.filter((c) => c.like)
-      case "mostWatched":
+      case "mostViewers":
         return arr.filter((c) => c.viewers > 800)
       default:
         return arr
     }
   }
-
   updateTermHandler = (term) => this.setState({ term })
+
   updateFilterHandler = (filter) => this.setState({ filter })
 
   render() {
@@ -100,7 +100,7 @@ class App extends React.Component {
     const allMoviesCount = data.length
     const favouriteMovies = data.filter((c) => c.favourite).length
     const likeMovies = data.filter((c) => c.like).length
-    const visibleDate = this.filterHandler(
+    const visibleData = this.filterHandler(
       this.searchHandler(data, term),
       filter
     )
@@ -114,10 +114,13 @@ class App extends React.Component {
           />
           <div className='search-panel'>
             <SearchPanel updateTermHandler={this.updateTermHandler} />
-            <AppFilter updateFilterHandler={this.updateFilterHandler} />
+            <AppFilter
+              filter={filter}
+              updateFilterHandler={this.updateFilterHandler}
+            />
           </div>
           <MovieList
-            data={visibleDate}
+            data={visibleData}
             onDelete={this.onDelete}
             onToggleProp={this.onToggleProp}
           />
