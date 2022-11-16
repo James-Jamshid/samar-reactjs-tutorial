@@ -35,6 +35,7 @@ class App extends React.Component {
         },
       ],
       term: "",
+      filter: "all",
     }
   }
   onDelete = (id) => {
@@ -48,6 +49,7 @@ class App extends React.Component {
       }
     })
   }
+
   addForm = (item) => {
     const newItem = {
       name: item.name,
@@ -60,6 +62,7 @@ class App extends React.Component {
       data: [...data, newItem],
     }))
   }
+
   onToggleProp = (id, prop) => {
     this.setState(({ data }) => ({
       data: data.map((item) => {
@@ -70,20 +73,37 @@ class App extends React.Component {
       }),
     }))
   }
+
   searchHandler = (arr, term) => {
     if (term.length === 0) {
       return arr
     }
     return arr.filter((item) => item.name.toLowerCase().indexOf(term) > -1)
   }
-  updateTermHandler = (term) => this.setState({ term: term })
+
+  filterHandler = (arr, filter) => {
+    switch (filter) {
+      case "popular":
+        return arr.filter((c) => c.like)
+      case "mostWatched":
+        return arr.filter((c) => c.viewers > 800)
+      default:
+        return arr
+    }
+  }
+
+  updateTermHandler = (term) => this.setState({ term })
+  updateFilterHandler = (filter) => this.setState({ filter })
 
   render() {
-    const { data, term } = this.state
+    const { data, term, filter } = this.state
     const allMoviesCount = data.length
     const favouriteMovies = data.filter((c) => c.favourite).length
     const likeMovies = data.filter((c) => c.like).length
-    const visibleDate = this.searchHandler(data, term)
+    const visibleDate = this.filterHandler(
+      this.searchHandler(data, term),
+      filter
+    )
     return (
       <div className='app font-monospace'>
         <div className='content'>
@@ -94,7 +114,7 @@ class App extends React.Component {
           />
           <div className='search-panel'>
             <SearchPanel updateTermHandler={this.updateTermHandler} />
-            <AppFilter />
+            <AppFilter updateFilterHandler={this.updateFilterHandler} />
           </div>
           <MovieList
             data={visibleDate}

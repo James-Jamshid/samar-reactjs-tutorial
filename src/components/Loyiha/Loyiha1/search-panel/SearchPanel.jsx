@@ -8,7 +8,7 @@ class SearchPanel extends React.Component {
     }
   }
   updateTermHandler = (e) => {
-    const term = e.target.value
+    const term = e.target.value.toLowerCase()
     this.setState({ term })
     this.props.updateTermHandler(term)
   }
@@ -16,7 +16,7 @@ class SearchPanel extends React.Component {
     return (
       <input
         onChange={this.updateTermHandler}
-        value={this.state.value}
+        value={this.state.term}
         type='text'
         className='form-control search-input'
         placeholder='Search movies...'
