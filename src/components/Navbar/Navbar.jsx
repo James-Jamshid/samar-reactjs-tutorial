@@ -18,7 +18,10 @@ const Navbar = () => {
           <button> test page</button>
         </Link>
         <Link to='/lesson3.2'>
-          <button> State with FuncComp</button>
+          <button> State with ClassComp</button>
+        </Link>
+        <Link to='/lesson3.3'>
+          <button> State with Function Comp</button>
         </Link>
         <Link to='/loyiha'>
           <button>loyiha</button>

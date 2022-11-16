@@ -6,7 +6,7 @@ import MovieList from "../movie-list/MovieList"
 import MoviesAddForm from "../movies-add-form/MoviesAddForm"
 import SearchPanel from "../search-panel/SearchPanel"
 import { v4 as uuidv4 } from "uuid"
-import "./app.css"
+import "./app.scss"
 class App extends React.Component {
   constructor(props) {
     super(props)
